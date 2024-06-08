@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ViewGroup que posiciona os elementos de forma linear.
+    ou seja, um após o outro
+    android:orientation -> define como o linearlayout
+    vai posicionar os elementos na interface
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso(KG)"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/edt_peso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite seu peso..."
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Altura(M)"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp" />
+
+    <EditText
+        android:id="@+id/edt_altura"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite sua altura..."
+        android:layout_margin="10dp"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IMC:"
+        android:layout_margin="10dp" />
+
+    <TextView
+        android:id="@+id/txt_imc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0"
+        android:layout_margin="10dp" />
+
+    <!--
+        posso adicionar um linear layout
+        dentro de outro linear layout
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" >
+
+        <Button
+            android:id="@+id/btn_calcular_imc"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="Calcular" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_limpar"
+            android:layout_width="165dp"
+            android:layout_height="wrap_content"
+            android:text="Limpar" />
+
+    </LinearLayout>
+
+</LinearLayout>
