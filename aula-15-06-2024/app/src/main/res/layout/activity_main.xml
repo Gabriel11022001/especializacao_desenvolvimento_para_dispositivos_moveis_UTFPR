@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ViewGroup que nos possibilita posicionar
+    os elementos utilizando constraints, o que nos possibilita
+    posicionar os elementos de maneira mais simples e facilitada
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <!--
+        android:layout_marginStart -> margenm da esquerda
+        android:layout_marginTop -> margem do topo
+        app:layout_constraintStart_toStartOf -> o início do elemento
+        vai se posicionar no início do elemento que eu definir
+        app:layout_constraintTop_toTopOf -> o topo do elemento vai se
+        posicionar no topo do elemento que eu definir
+        ========================= HardCoded =============================
+        -> o ideal é evitar utilizar hardcoded, ou seja, todos os textos
+        que serão estáticos, devem ser adicionados em um arquivo onde eles
+        ficam salvos, isso serve para evitar a falta de padronização
+        -> textos devem ficar salvos no arquivo strings.xml
+    -->
+    <TextView
+        android:id="@+id/txt_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_label_peso"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+        app:layout_constraintStart_toEndOf -> o início do meu elemento
+        vai estar posicionado no final do elemento que eu definir
+        app:layout_constraintEnd_toEndOf -> o final do meu elemento vai se
+        posicionar no final do elemento que eu definir
+        app:layout_constraintBottom_toBottomOf -> a parte de baixo do meu elemento
+        vai ficar na parte de baixo do elemento que eu definir
+    -->
+    <EditText
+        android:id="@+id/edt_peso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edt_peso"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toEndOf="@+id/txt_peso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_peso"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_peso" />
+
+    <TextView
+        android:id="@+id/txt_altura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_label_altura"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="@id/txt_peso"
+        app:layout_constraintTop_toBottomOf="@id/txt_peso" />
+
+    <EditText
+        android:id="@+id/edt_altura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edt_altura"
+        android:inputType="numberDecimal"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/txt_altura"
+        app:layout_constraintTop_toTopOf="@id/txt_altura"
+        app:layout_constraintBottom_toBottomOf="@id/txt_altura"
+        app:layout_constraintEnd_toEndOf="@id/edt_peso" />
+
+    <TextView
+        android:id="@+id/txt_imc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_label_imc"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/txt_altura"
+        app:layout_constraintTop_toBottomOf="@id/txt_altura"
+        app:layout_constraintEnd_toStartOf="@id/txt_imc_calculado"
+        android:layout_marginTop="40dp"
+        app:layout_constraintHorizontal_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/txt_imc_calculado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_padrao_imc"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="@id/edt_altura"
+        app:layout_constraintTop_toTopOf="@id/txt_imc_label"
+        app:layout_constraintBottom_toBottomOf="@id/txt_imc_label"
+        app:layout_constraintStart_toEndOf="@id/txt_imc_label" />
+
+    <Button
+        android:id="@+id/btn_calcular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_calcular"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_imc_label"
+        app:layout_constraintEnd_toStartOf="@id/btn_limpar"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/btn_limpar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_limpar"
+        android:textStyle="bold|italic"
+        android:backgroundTint="@android:color/holo_red_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_calcular"
+        app:layout_constraintBottom_toBottomOf="@id/btn_calcular"
+        app:layout_constraintStart_toEndOf="@id/btn_calcular"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

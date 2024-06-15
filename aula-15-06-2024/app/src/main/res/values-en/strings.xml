@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    -> arquivo de strings mas para o idioma EN
+    -> o arquivo de strings será definido pelo idioma
+    do dispositivo
+-->
+<resources>
+    <string name="app_name">constraint-layout</string>
+    <string name="txt_label_peso">Weight:</string>
+    <string name="edt_peso">Enter the weight...</string>
+    <string name="txt_label_altura">Height:</string>
+    <string name="edt_altura">Enter your height...</string>
+    <string name="txt_label_imc">BMI:</string>
+    <string name="txt_btn_calcular">Calculate</string>
+    <string name="txt_btn_limpar">Clean</string>
+    <string name="txt_padrao_imc">0.0</string>
+    <string name="alerta_erro">Errors occurred when trying to calculate BMI:</string>
+    <string name="alerta_sucesso">Calculated BMI:</string>
+    <string name="label_tela_inicial">Splash screen</string>
+</resources>

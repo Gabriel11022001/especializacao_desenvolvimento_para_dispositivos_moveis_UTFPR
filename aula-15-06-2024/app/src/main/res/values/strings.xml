@@ -1,0 +1,22 @@
+<!--
+    -> nesse arquivo, devem ficar fixos todos os textos estáticos da
+    aplicação, isso serve para manter padronização nos textos, por exemplo, para
+    evitar que em uma tela o texto de um botão seja "salvar" e em outra tela seja "cadastrar",
+    sendo que os dois botões servem para a mesma coisa
+    -> fica mais fácil alterar um texto se eu deixo ele salvo nesse arquivo
+-->
+<resources>
+    <!-- texto que salva o nome do app -->
+    <string name="app_name">constraint-layout</string>
+    <string name="txt_label_peso">Peso:</string>
+    <string name="edt_peso">Digite o peso...</string>
+    <string name="txt_label_altura">Altura:</string>
+    <string name="edt_altura">Digite sua altura...</string>
+    <string name="txt_label_imc">IMC:</string>
+    <string name="txt_btn_calcular">Calcular</string>
+    <string name="txt_btn_limpar">Limpar</string>
+    <string name="txt_padrao_imc">0,0</string>
+    <string name="alerta_erro">Ocorreram erros ao tentar-se calcular o imc!</string>
+    <string name="alerta_sucesso">IMC calculado:</string>
+    <string name="label_tela_inicial">Tela inicial</string>
+</resources>
