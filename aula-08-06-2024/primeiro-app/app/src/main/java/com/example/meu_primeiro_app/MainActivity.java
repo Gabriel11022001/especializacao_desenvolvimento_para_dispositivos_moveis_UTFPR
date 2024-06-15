@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.btnLimpar.setOnClickListener(this);
         // mapeando o evento de clique longo
         this.btnCalcularImc.setOnLongClickListener(this);
+        // métodos de depuração
+        System.out.println("Posso debugar também com o método println()");
+        Log.i("INFORMACAO", "Método de log de informação!");
+        Log.i("DEBUG", "Método de log de debug!");
+        Log.e("ERRO", "Método de log de erro!");
+        Log.w("WARNIG", "Método de aviso!");
     }
 
     private void limpar() {
@@ -88,7 +94,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (view.getId() == this.btnCalcularImc.getId()) {
             // clicou no botão para calcular o imc
-            this.calcularImc();
+
+            try {
+                this.calcularImc();
+            } catch (Exception e) {
+                Log.e("erro_calculo_imc", "Não é possível realizar divisão por 0!");
+                Toast.makeText(getApplicationContext(), "Não é possível realizar divisão por 0!", Toast.LENGTH_LONG).show();
+            }
+
         } else {
             // clicou no botão para limpar os campos e o texto com o calculo do imc
             this.limpar();
