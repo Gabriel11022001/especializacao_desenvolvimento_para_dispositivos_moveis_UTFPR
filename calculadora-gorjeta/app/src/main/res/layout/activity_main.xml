@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp" >
+
+        <!--
+            O ImageView é um elemento de interface que serve
+            para apresentar imagens na interface
+            android:src -> definir qual imagem vai ser renderizada
+        -->
+        <ImageView
+            android:id="@+id/img_loja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_loja"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@string/txt_context_description_icone_loja"
+            app:layout_constraintEnd_toStartOf="@id/text_input_layout_campo_valor_total"
+            app:layout_constraintHorizontal_chainStyle="spread_inside" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_campo_valor_total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/img_loja"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/img_loja"
+            app:layout_constraintBottom_toBottomOf="@id/img_loja"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"
+            android:elevation="10dp" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_valor_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_edt_valor_total"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/img_percentual_gorjeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_servico"
+            app:layout_constraintStart_toStartOf="@id/img_loja"
+            app:layout_constraintTop_toBottomOf="@id/text_input_layout_campo_valor_total"
+            android:layout_marginTop="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_lb_como_foi_atendimento"
+            app:layout_constraintStart_toEndOf="@id/img_percentual_gorjeta"
+            app:layout_constraintTop_toTopOf="@id/img_percentual_gorjeta"
+            app:layout_constraintBottom_toBottomOf="@id/img_percentual_gorjeta"
+            android:layout_marginStart="10dp" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_percentual_contentamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_percentual_gorjeta"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp" >
+
+            <RadioButton
+                android:id="@+id/rd_otimo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_muito_bom" />
+
+            <RadioButton
+                android:id="@+id/rd_bom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_bom"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rd_mais_ou_menos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_mais_ou_menos" />
+
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/img_arredondar_cima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arredondar_para_cima"
+            app:layout_constraintStart_toStartOf="@id/img_percentual_gorjeta"
+            app:layout_constraintTop_toBottomOf="@id/radio_group_percentual_contentamento"
+            app:layout_constraintEnd_toStartOf="@id/sw_arredondar_para_cima"
+            android:layout_marginTop="30dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside" />
+
+        <Switch
+            android:id="@+id/sw_arredondar_para_cima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_arredondar_cima"
+            app:layout_constraintTop_toTopOf="@id/img_arredondar_cima"
+            app:layout_constraintBottom_toBottomOf="@id/img_arredondar_cima"
+            android:layout_marginEnd="20dp"
+            tools:ignore="UseSwitchCompatOrMaterialXml"
+            android:text="@string/txt_pergunta_arredondar_cima"
+            android:checked="true" />
+
+        <Button
+            android:id="@+id/btn_calcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_btn_calcular"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_arredondar_cima"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="40dp"
+            android:padding="15dp"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:elevation="10dp" />
+
+        <TextView
+            android:id="@+id/txt_resultado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resultado: "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_calcular"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/holo_green_dark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

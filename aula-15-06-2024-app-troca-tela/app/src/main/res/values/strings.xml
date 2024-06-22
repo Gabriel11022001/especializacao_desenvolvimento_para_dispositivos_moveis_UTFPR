@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">app-troca-tela</string>
+    <string name="txt_btn_lancamento">Lançamento</string>
+    <string name="txt_hint_codigo_produto">Digite o código do produto...</string>
+    <string name="txt_hint_quantidade">Informe a quantidade...</string>
+    <string name="txt_hint_preco">Informe o preço</string>
+    <string name="txt_btn_realizar_lancamento">Realizar lançamento</string>
+    <string name="txt_btn_listar_lancamentos">Listar lançamentos</string>
+    <string name="txt_titulo_lancamentos_realizados">Lançamentos realizados</string>
+    <string name="txt_produtos">Produtos</string>
+</resources>

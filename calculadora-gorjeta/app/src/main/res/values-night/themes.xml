@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Calculadoragorjeta" parent="Theme.Material3.DayNight">
+        <!--
+            aqui é onde eu customizo o tema padrão da aplicação
+            para o modo escuro
+        -->
+        <item name="colorPrimary">@color/primaria_modo_escuro</item>
+        <item name="colorPrimaryVariant">@color/primaria_modo_escuro</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/secundaria_modo_escuro</item>
+        <item name="colorSecondaryVariant">@color/secundaria_modo_escuro</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+
+    <style name="Theme.Calculadoragorjeta" parent="Base.Theme.Calculadoragorjeta" />
+</resources>

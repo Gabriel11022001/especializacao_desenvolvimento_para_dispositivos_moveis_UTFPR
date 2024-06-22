@@ -1,0 +1,12 @@
+<resources>
+    <!-- app_name -> string que armazena o nome do aplicativo -->
+    <string name="app_name">Calculadora de Gorjeta</string>
+    <string name="txt_context_description_icone_loja">Ícone que representa uma loja!</string>
+    <string name="hint_edt_valor_total">Valor total</string>
+    <string name="txt_lb_como_foi_atendimento">O quão bom foi o atendimento?</string>
+    <string name="txt_muito_bom">ótimo(20%)</string>
+    <string name="txt_bom">bom(15%)</string>
+    <string name="txt_mais_ou_menos">mais ou menos(10%)</string>
+    <string name="txt_pergunta_arredondar_cima">Arredondar para cima?</string>
+    <string name="txt_btn_calcular">Calcular</string>
+</resources>
