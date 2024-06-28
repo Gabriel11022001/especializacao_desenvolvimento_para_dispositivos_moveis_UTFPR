@@ -102,8 +102,45 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun validarCampos(): Boolean {
+        var ok: Boolean = true
+        val precoCombustivel1 = this.edtPrecoCombustivel1.text.toString()
+        val precoCombustivel2 = this.edtPrecoCombustivel2.text.toString()
+        val consumoCombustivel1 = this.edtConsumcCombustivel1.text.toString()
+        val consumoCombustivel2 = this.edtConsumoCombustivel2.text.toString()
 
-        return true
+        if (precoCombustivel1.isEmpty()) {
+            this.edtPrecoCombustivel1.error = "Campo obrigatório!"
+            ok = false
+        } else if (precoCombustivel1.toDouble() <= 0.0) {
+            this.edtPrecoCombustivel1.error = "Preço inválido!"
+            ok = false
+        }
+
+        if (precoCombustivel2.isEmpty()) {
+            ok = false
+            this.edtPrecoCombustivel2.error = "Campo obrigatório!"
+        } else if (precoCombustivel2.toDouble() <= 0.0) {
+            ok = false
+            this.edtPrecoCombustivel2.error = "Preço inválido!"
+        }
+
+        if (consumoCombustivel1.isEmpty()) {
+            ok = false
+            this.edtConsumcCombustivel1.error = "Campo obrigatório!"
+        } else if (consumoCombustivel1.toDouble() <= 0.0) {
+            ok = false
+            this.edtConsumcCombustivel1.error = "Consumo inválido!"
+        }
+
+        if (consumoCombustivel2.isEmpty()) {
+            ok = false
+            this.edtConsumoCombustivel2.error = "Campo obrigatório!"
+        } else if (consumoCombustivel2.toDouble() <= 0.0) {
+            ok = false
+            this.edtConsumoCombustivel2.error = "Consumo inválido!"
+        }
+
+        return ok
     }
 
     private val getResultadoConsumoCombustivel = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
