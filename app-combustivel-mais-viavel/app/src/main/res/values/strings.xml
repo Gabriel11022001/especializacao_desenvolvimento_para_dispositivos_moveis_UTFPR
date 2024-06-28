@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">app-combustivel-mais-viavel</string>
+    <string name="text_label_consumo_combustivel_1">Consumo combustível 1</string>
+    <string name="text_label_consumo_combustivel_2">Consumo combustível 2</string>
+    <string name="hint_consumo_combustivel_1">Consumo do combustível 1...</string>
+    <string name="hint_consumo_combustivel_2">Consumo do combustível 2...</string>
+    <string name="txt_btn_consultar">Consultar</string>
+    <string name="txt_preco_combustivel_1">Preço do combustível 1</string>
+    <string name="hint_preco_combustivel_1">Preço do combustível 1...</string>
+    <string name="txt_preco_combustivel_2">Preço do combustível 2</string>
+    <string name="hint_preco_combustivel_2">Preço do combustível 2...</string>
+    <string name="txt_btn_calcular">Calcular</string>
+    <string name="txt_btn_limpar">Limpar</string>
+    <string name="txt_combustivel_mais_viavel">Combustível mais viável:</string>
+    <string name="txt_titulo">Combustível mais viável</string>
+</resources>

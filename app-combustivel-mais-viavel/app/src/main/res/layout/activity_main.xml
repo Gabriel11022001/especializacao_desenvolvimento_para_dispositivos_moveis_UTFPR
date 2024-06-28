@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <ImageView
+        android:id="@+id/ic_consumo_combustivel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_carro"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:id="@+id/txt_label_consumo_combustivel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/text_label_consumo_combustivel_1"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ic_consumo_combustivel_1"
+        app:layout_constraintStart_toEndOf="@id/ic_consumo_combustivel_1"
+        app:layout_constraintTop_toTopOf="@id/ic_consumo_combustivel_1"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edt_consumo_combustivel_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_campo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_consumo_combustivel_1"
+        app:layout_constraintEnd_toStartOf="@id/btn_consultar_consumo_combustivel_1"
+        android:elevation="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_consumo_combustivel_1"
+        android:inputType="numberDecimal"
+        android:textColor="@color/vermelho"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo" />
+
+    <Button
+        android:id="@+id/btn_consultar_consumo_combustivel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_consultar"
+        android:backgroundTint="@color/vermelho"
+        android:fontFamily="@font/baloo"
+        app:layout_constraintStart_toEndOf="@id/edt_consumo_combustivel_1"
+        app:layout_constraintTop_toTopOf="@id/edt_consumo_combustivel_1"
+        app:layout_constraintBottom_toBottomOf="@id/edt_consumo_combustivel_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:textAllCaps="true" />
+
+    <ImageView
+        android:id="@+id/ic_consumo_combustivel_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_carro"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/edt_consumo_combustivel_1" />
+
+    <TextView
+        android:id="@+id/txt_label_consumo_combustivel_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/text_label_consumo_combustivel_2"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/ic_consumo_combustivel_2"
+        app:layout_constraintStart_toEndOf="@id/ic_consumo_combustivel_2"
+        app:layout_constraintTop_toTopOf="@id/ic_consumo_combustivel_2"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edt_consumo_combustivel_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_campo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_consumo_combustivel_2"
+        app:layout_constraintEnd_toStartOf="@id/btn_consultar_consumo_combustivel_2"
+        android:elevation="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_consumo_combustivel_2"
+        android:inputType="numberDecimal"
+        android:textColor="@color/vermelho"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo" />
+
+    <Button
+        android:id="@+id/btn_consultar_consumo_combustivel_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_consultar"
+        android:backgroundTint="@color/vermelho"
+        android:fontFamily="@font/baloo"
+        app:layout_constraintStart_toEndOf="@id/edt_consumo_combustivel_2"
+        app:layout_constraintTop_toTopOf="@id/edt_consumo_combustivel_2"
+        app:layout_constraintBottom_toBottomOf="@id/edt_consumo_combustivel_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="10dp"
+        android:textAllCaps="true" />
+
+    <ImageView
+        android:id="@+id/ic_preco_combustivel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dinheiro"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/edt_consumo_combustivel_2" />
+
+    <TextView
+        android:id="@+id/txt_label_preco_combustivel_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/txt_preco_combustivel_1"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ic_preco_combustivel_1"
+        app:layout_constraintTop_toTopOf="@id/ic_preco_combustivel_1"
+        app:layout_constraintBottom_toBottomOf="@id/ic_preco_combustivel_1"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edt_preco_combustivel_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_campo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_preco_combustivel_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_preco_combustivel_1"
+        android:inputType="numberDecimal"
+        android:textColor="@color/vermelho"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo" />
+
+    <ImageView
+        android:id="@+id/ic_preco_combustivel_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_dinheiro"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/edt_preco_combustivel_1" />
+
+    <TextView
+        android:id="@+id/txt_label_preco_combustivel_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/txt_preco_combustivel_2"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ic_preco_combustivel_2"
+        app:layout_constraintTop_toTopOf="@id/ic_preco_combustivel_2"
+        app:layout_constraintBottom_toBottomOf="@id/ic_preco_combustivel_2"
+        android:fontFamily="@font/baloo"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/edt_preco_combustivel_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/estilo_campo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_preco_combustivel_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/hint_preco_combustivel_2"
+        android:inputType="numberDecimal"
+        android:textColor="@color/vermelho"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo" />
+
+    <Button
+        android:id="@+id/btn_calcular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_calcular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_limpar"
+        app:layout_constraintTop_toBottomOf="@id/edt_preco_combustivel_2"
+        android:fontFamily="@font/baloo"
+        android:textSize="20sp"
+        android:backgroundTint="@color/vermelho"
+        android:padding="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+
+    <Button
+        android:id="@+id/btn_limpar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_btn_limpar"
+        android:fontFamily="@font/baloo"
+        android:textSize="20sp"
+        android:backgroundTint="@color/vermelho"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_calcular"
+        app:layout_constraintBottom_toBottomOf="@id/btn_calcular"
+        app:layout_constraintStart_toEndOf="@id/btn_calcular"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/vermelho"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="5dp" >
+
+        <TextView
+            android:id="@+id/txt_combustivel_mais_viavel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_combustivel_mais_viavel"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:fontFamily="@font/baloo"
+            android:textAlignment="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
