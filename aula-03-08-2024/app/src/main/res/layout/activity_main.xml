@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/txt_label_codigo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20dp" />
+
+    <EditText
+        android:id="@+id/edt_codigo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Digite o código..."
+        app:layout_constraintStart_toStartOf="@id/txt_label_codigo"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_codigo"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/txt_label_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="@id/edt_codigo"
+        app:layout_constraintTop_toBottomOf="@id/edt_codigo"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:id="@+id/edt_nome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Digite o nome do cliente..."
+        app:layout_constraintStart_toStartOf="@id/txt_label_nome"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/txt_label_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="E-mail:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="@id/edt_nome"
+        app:layout_constraintTop_toBottomOf="@id/edt_nome"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Digite o e-mail do cliente..."
+        app:layout_constraintStart_toStartOf="@id/txt_label_email"
+        app:layout_constraintTop_toBottomOf="@id/txt_label_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/btn_inserir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Inserir"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_editar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_inserir"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_listar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Listar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_editar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_deletar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Deletar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_listar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_pesquisar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Pesquisar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_deletar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
+        android:textSize="20sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
