@@ -1,5 +1,7 @@
 package com.example.app_persistencia_dados_listagem
 
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -23,6 +25,12 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var btnConsultar: Button
     private lateinit var clienteDAO: ClienteDAO
 
+    /**
+     * no onCreate(), geralmente nós realizamos os seguintes processos:
+     * 1 - inflamos o layout pra ele ser manipulado por programação
+     * 2 - mapear os elementos de interface
+     * 3 - configurar os eventos
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +40,55 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         this.mapearEventos()
 
         this.clienteDAO = ClienteDAO(this)
+    }
+
+    /**
+     * no ciclo de vida, o método onStart() é invocado após o
+     * onCreate()
+     */
+    override fun onStart() {
+        super.onStart()
+        Log.d("onStart", "Executou o método onStart() no ciclo de vida...")
+    }
+
+    /**
+     * no ciclo de vida, o onResume() é invocado após o onStart(),
+     * geralmente nesse método nós fazemos o seguinte:
+     * 1 - consultamos dados no banco de dados ou buscamos dados por meio de uma Rest API
+     * 2 - apresentamos os dados para o usuário
+     */
+    override fun onResume() {
+        super.onResume()
+        Log.d("onResume", "Executou o método onResume() no ciclo de vida...")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("onStop", "Executou o método onStop() no ciclo de vida...")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        /*try {
+            val builderAlertDialog = AlertDialog.Builder(applicationContext)
+            // configurando o builder do AlertDialog
+            builderAlertDialog.setTitle("Sair")
+            builderAlertDialog.setMessage("Deseja sair da aplicação?")
+            builderAlertDialog.setCancelable(false)
+            builderAlertDialog.setPositiveButton("Sim") { dialog, which ->
+                // fechar a activity
+                Log.d("teste", "Finalizou a aplicação...")
+                super.onDestroy()
+            }
+
+            val alertDialog = builderAlertDialog.create()
+            alertDialog.show()
+        } catch (e: Exception) {
+            Toast.makeText(applicationContext, "Ocorreu um erro: ${ e.message.toString() }", Toast.LENGTH_LONG)
+                .show()
+        }*/
+
     }
 
     private fun mapearElementosInterface() {
@@ -186,7 +243,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     private fun buscarCliente() {
 
-        try {
+        /*try {
             val codigo: String = this.edtCodigo.text.toString()
 
             if (codigo.isEmpty()) {
@@ -207,8 +264,50 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             Toast.makeText(applicationContext, "Ocorreu um erro ao tentar-se buscar os dados do cliente!", Toast.LENGTH_LONG)
                 .show()
             Log.e("erro_consultar_cliente", e.message.toString())
+        }*/
+
+        // consultar com AlertDialog
+        val builderAlertDialogConsultar = AlertDialog.Builder(this)
+        builderAlertDialogConsultar.setTitle("Pesquisa")
+        builderAlertDialogConsultar.setMessage("Digite o código do cliente")
+        builderAlertDialogConsultar.setCancelable(false)
+
+        val edtCodigoClienteConsultar: EditText = EditText(this)
+        edtCodigoClienteConsultar.hint = "Digite o código..."
+        builderAlertDialogConsultar.setView(edtCodigoClienteConsultar)
+
+        // evento de consulta
+        builderAlertDialogConsultar.setPositiveButton("Consultar") { dialogInterface, i ->
+
+            try {
+                Log.d("teste", "Clicou no botão positivo para consultar os clientes!")
+                val codigo: String = edtCodigoClienteConsultar.text.toString()
+                Log.d("codigo", codigo)
+
+                if (codigo.isEmpty()) {
+                    Toast.makeText(this, "Informe o código do cliente!", Toast.LENGTH_LONG)
+                        .show()
+                } else {
+                    val cliente: Cliente = clienteDAO.buscarPeloId(codigo.toInt())
+                    edtCodigo.setText(cliente.id.toString())
+                    edtNome.setText(cliente.nome)
+                    edtEmail.setText(cliente.email)
+                }
+
+            } catch (e: Exception) {
+                Toast.makeText(this, e.message.toString(), Toast.LENGTH_LONG)
+                    .show()
+                Log.e("erro", e.message.toString())
+            }
+
         }
 
+        // fechar o dialog
+        builderAlertDialogConsultar.setNegativeButton("Fechar") { dialogInterface, i ->
+            dialogInterface.dismiss()
+        }
+
+        builderAlertDialogConsultar.show()
     }
 
     private fun deletarCliente() {
@@ -247,7 +346,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             this.editarCliente()
         } else if (elementoInterface.id == R.id.btn_listar) {
             // listar todos os clientes
-            this.listarClientes()
+            // this.listarClientes()
+            val intentRedirecionarTelaListagemClientes: Intent = Intent(applicationContext, ClientesActivity::class.java)
+            startActivity(intentRedirecionarTelaListagemClientes)
         } else if (elementoInterface.id == R.id.btn_pesquisar) {
             // buscar um cliente
             this.buscarCliente()

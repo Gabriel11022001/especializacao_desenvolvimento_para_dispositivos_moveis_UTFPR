@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">app-recycler-view</string>
+    <!-- motivações -->
+    <string name="primeira_motivacao">I am strong.</string>
+    <string name="segunda_motivacao">I believe in myself.</string>
+    <string name="terceira_motivacao">Each day is a new opportunity to grow and be a better version of myself.</string>
+    <string name="quarta_motivacao">Every challenge in my life is an opportunity to learn from.</string>
+    <string name="quinta_motivacao">I have so much to be grateful for.</string>
+</resources>

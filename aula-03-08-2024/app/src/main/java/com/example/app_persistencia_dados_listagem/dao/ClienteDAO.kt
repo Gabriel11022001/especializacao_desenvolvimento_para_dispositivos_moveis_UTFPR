@@ -61,6 +61,8 @@ class ClienteDAO(contexto: Context): BaseDAO(contexto) {
                     cursorConsultarCliente.getString(cursorConsultarCliente.getColumnIndex("nome")),
                     cursorConsultarCliente.getString(cursorConsultarCliente.getColumnIndex("email"))
                 )
+
+                return cliente
             }
 
             cursorConsultarCliente.close()
