@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "385239802039",
+    "project_id": "aula-pos-24-08-2024",
+    "storage_bucket": "aula-pos-24-08-2024.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:385239802039:android:f5698784ee667ae9326d32",
+        "android_client_info": {
+          "package_name": "com.example.app_persistencia_dados_listagem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZsQbnq9pfd6k1LuiN7pE20aIu-82Z8gQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

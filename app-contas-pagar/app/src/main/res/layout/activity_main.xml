@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/white" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp" >
+
+        <LinearLayout
+            android:id="@+id/container_campo_tipo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/estilo_campo"
+            android:padding="20dp"
+            android:elevation="4dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_label_tipo"
+                android:textStyle="bold|italic"
+                android:textSize="18sp"
+                android:textColor="@color/verde_primario" />
+
+            <Spinner
+                android:id="@+id/spn_tipo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_campo_detalhe"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/container_campo_tipo"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/estilo_campo"
+            android:padding="20dp"
+            android:elevation="4dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_label_detalhe"
+                android:textStyle="bold|italic"
+                android:textSize="18sp"
+                android:textColor="@color/verde_primario" />
+
+            <Spinner
+                android:id="@+id/spn_detalhe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_campo_valor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/container_campo_detalhe"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/estilo_campo"
+            android:padding="20dp"
+            android:elevation="4dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_label_valor"
+                android:textStyle="bold|italic"
+                android:textSize="18sp"
+                android:textColor="@color/verde_primario" />
+
+            <EditText
+                android:id="@+id/edt_valor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_valor"
+                android:textColor="@color/black"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/container_campo_data_lancamento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/container_campo_valor"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:background="@drawable/estilo_campo"
+            android:padding="20dp"
+            android:elevation="4dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_label_data_lancamento"
+                android:textStyle="bold|italic"
+                android:textSize="18sp"
+                android:textColor="@color/verde_primario" />
+
+            <EditText
+                android:id="@+id/edt_data_lancamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ex: 00/00/0000"
+                android:textColor="@color/black"
+                android:inputType="date" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_lancar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_btn_lancar"
+            android:backgroundTint="@color/verde_primario"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/container_campo_data_lancamento"
+            android:layout_margin="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:textAllCaps="true" />
+
+        <Button
+            android:id="@+id/btn_listar_lancamentos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_btn_ver_lancamentos"
+            android:backgroundTint="@color/verde_primario"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_lancar"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:textAllCaps="true" />
+
+        <Button
+            android:id="@+id/btn_saldo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_btn_saldo"
+            android:backgroundTint="@color/verde_primario"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_listar_lancamentos"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="40dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:textAllCaps="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -25,7 +25,8 @@ class ClienteAdapter(val contexto: Context): Adapter<ClienteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ClienteViewHolder, position: Int) {
-
+        holder.txtNomeCliente.text = this.clientes.get(position).nome
+        holder.txtEmailCliente.text = this.clientes.get(position).email
     }
 
     fun setClientes(clientes: ArrayList<Cliente>) {

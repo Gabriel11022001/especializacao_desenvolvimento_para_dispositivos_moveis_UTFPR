@@ -7,7 +7,9 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app_persistencia_dados_listagem.adapter.ClienteAdapter
 import com.example.app_persistencia_dados_listagem.dao.ClienteDAO
 import com.example.app_persistencia_dados_listagem.listener.IOnEventoClickListener
 import com.example.app_persistencia_dados_listagem.model.Cliente
@@ -23,6 +25,7 @@ class ClientesActivity : AppCompatActivity() {
     // private lateinit var clienteAdapter: ArrayAdapter<String>
     private lateinit var recyclerClientes: RecyclerView
     private lateinit var eventoClickListener: IOnEventoClickListener
+    private lateinit var clienteAdapter: ClienteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,8 +88,11 @@ class ClientesActivity : AppCompatActivity() {
         // this.lvClientes.adapter = this.clienteAdapter
 
         // configurar o adapter da RecyclerView
+        this.clienteAdapter = ClienteAdapter(this)
 
         // configurar a RecyclerView
+        this.recyclerClientes.adapter = this.clienteAdapter
+        this.recyclerClientes.layoutManager = LinearLayoutManager(this)
     }
 
     private fun consultarClientes() {
@@ -106,6 +112,7 @@ class ClientesActivity : AppCompatActivity() {
 
                 // passando dados para o adapter
                 // this.clienteAdapter.addAll(this.nomesClientes)
+                this.clienteAdapter.setClientes(this.clientes)
                 // notificando o adapter que houve alteração nos dados
                 // this.clienteAdapter.notifyDataSetChanged()
             }

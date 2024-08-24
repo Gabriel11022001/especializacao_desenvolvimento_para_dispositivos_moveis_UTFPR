@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">app-contas-a-pagar</string>
+    <string name="txt_label_tipo">Tipo</string>
+    <string name="txt_label_detalhe">Detalhe</string>
+    <string name="txt_label_valor">Valor</string>
+    <string name="hint_valor">Digite o valor...</string>
+    <string name="txt_label_data_lancamento">Data de lançamento</string>
+    <string name="txt_btn_lancar">Lançar</string>
+    <string name="txt_btn_ver_lancamentos">Ver lançamentos</string>
+    <string name="txt_btn_saldo">Saldo</string>
+</resources>

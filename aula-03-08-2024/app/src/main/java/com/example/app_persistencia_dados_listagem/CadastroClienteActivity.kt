@@ -10,7 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.app_persistencia_dados_listagem.dao.ClienteDAO
+import com.example.app_persistencia_dados_listagem.firebase.ClienteFirebase
 import com.example.app_persistencia_dados_listagem.model.Cliente
+import com.google.firebase.FirebaseApp
 
 class CadastroClienteActivity : AppCompatActivity(), OnClickListener {
 
@@ -18,6 +20,7 @@ class CadastroClienteActivity : AppCompatActivity(), OnClickListener {
     private lateinit var edtEmail: EditText
     private lateinit var btnInserir: Button
     private lateinit var clienteDAO: ClienteDAO
+    private var clienteFirebase: ClienteFirebase = ClienteFirebase()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +72,10 @@ class CadastroClienteActivity : AppCompatActivity(), OnClickListener {
                 )
 
                 val idClienteCadastrado: Int = this.clienteDAO.cadastrar(clienteCadastrar)
+
+                // cadastrar cliente no firebase
+                clienteCadastrar.id = idClienteCadastrado
+                this.clienteFirebase.cadastrar(clienteCadastrar)
 
                 if (idClienteCadastrado > 0) {
                     Toast.makeText(applicationContext, "Cliente cadastrado com sucesso!", Toast.LENGTH_LONG)
