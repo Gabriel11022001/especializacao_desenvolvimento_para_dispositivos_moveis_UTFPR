@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="20dp" >
+
+    <LinearLayout
+        android:id="@+id/linear_topo_alerta"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:padding="10dp"
+        android:background="@color/verde_primario"
+        android:elevation="4dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/txt_titulo_alerta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_mensagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensagem do alerta!"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/linear_topo_alerta"
+        app:layout_constraintTop_toBottomOf="@id/linear_topo_alerta"
+        app:layout_constraintEnd_toEndOf="@id/linear_topo_alerta"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btn_confirmar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_mensagem"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/verde_primario"
+        android:textAllCaps="true" />
+
+    <View
+        android:id="@+id/separador"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_confirmar"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btn_fechar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/btn_confirmar"
+        app:layout_constraintEnd_toEndOf="@id/btn_confirmar"
+        app:layout_constraintTop_toBottomOf="@id/separador"
+        android:backgroundTint="@color/cinza_fundo"
+        android:textColor="@color/black"
+        android:text="Fechar"
+        android:textAllCaps="true"
+        android:layout_marginTop="10dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

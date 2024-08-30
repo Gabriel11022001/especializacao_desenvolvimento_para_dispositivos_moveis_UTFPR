@@ -17,7 +17,9 @@ class GerenciadorBancoDados(val contexto: Context): SQLiteOpenHelper(
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "valor DOUBLE NOT NULL," +
                 "data_lancamento TEXT NOT NULL," +
-                "paga INTEGER NOT NULL)")
+                "paga INTEGER NOT NULL," +
+                "tipo TEXT," +
+                "detalhe TEXT)")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {

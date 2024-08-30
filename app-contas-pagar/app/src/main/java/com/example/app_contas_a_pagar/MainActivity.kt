@@ -1,5 +1,6 @@
 package com.example.app_contas_a_pagar
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -7,11 +8,13 @@ import android.view.View.OnClickListener
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
 import com.example.app_contas_a_pagar.dao.LancamentoDAO
 import com.example.app_contas_a_pagar.model.Lancamento
+import com.google.android.material.snackbar.Snackbar
 import java.util.ArrayList
 
 class MainActivity : AppCompatActivity(), OnClickListener {
@@ -22,7 +25,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     private lateinit var spnDetalhe: Spinner
     private lateinit var spnTipo: Spinner
     private lateinit var edtValor: EditText
-    private lateinit var edtDataLancamento: EditText
+    private lateinit var datePickerDataLancamento: DatePicker
     private lateinit var adapterSpinnerTipo: ArrayAdapter<String>
     private lateinit var adapterSpinnerDetalhe: ArrayAdapter<String>
     private lateinit var lancamentoDAO: LancamentoDAO
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         this.btnVerLancamentos = findViewById(R.id.btn_listar_lancamentos)
         this.btnSaldo = findViewById(R.id.btn_saldo)
         this.edtValor = findViewById(R.id.edt_valor)
-        this.edtDataLancamento = findViewById(R.id.edt_data_lancamento)
+        this.datePickerDataLancamento = findViewById(R.id.date_picker_data_lancamento)
         this.spnTipo = findViewById(R.id.spn_tipo)
         this.spnDetalhe = findViewById(R.id.spn_detalhe)
 
@@ -96,7 +99,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             opcoesDetalhes.add("Salário")
             opcoesDetalhes.add("Extras")
         } else {
-
+            opcoesDetalhes.add("Alimentação")
+            opcoesDetalhes.add("Moradia")
+            opcoesDetalhes.add("Saúde")
+            opcoesDetalhes.add("Transporte")
         }
 
         // popular spinner de detalhes com as opções
@@ -105,9 +111,22 @@ class MainActivity : AppCompatActivity(), OnClickListener {
     }
 
     private fun validarFormulario(): Boolean {
-        var ok: Boolean = true
+        var ok = true
         val valor: String = this.edtValor.text.toString().trim()
-        val dataLancamento: String = this.edtDataLancamento.text.toString().trim()
+        var msgErro: String = ""
+
+        if (valor.isEmpty()) {
+            ok = false
+            msgErro = "Informe o valor!"
+        } else if (valor.toDouble() <= 0.0) {
+            ok = false
+            msgErro = "Valor inválido!"
+        }
+
+        if (!msgErro.isEmpty()) {
+            Snackbar.make(findViewById(android.R.id.content), msgErro, Snackbar.LENGTH_LONG)
+                .show()
+        }
 
         return ok
     }
@@ -117,14 +136,36 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         try {
 
             if (this.validarFormulario()) {
+                val lancamento: Lancamento = Lancamento()
+                val dia = if ((this.datePickerDataLancamento.dayOfMonth) < 10) "0${ this.datePickerDataLancamento.dayOfMonth }" else (this.datePickerDataLancamento.dayOfMonth).toString()
+                val mes = if ((this.datePickerDataLancamento.month + 1) < 10) "0${ this.datePickerDataLancamento.month + 1 }" else (this.datePickerDataLancamento.month + 1).toString()
+                val ano = this.datePickerDataLancamento.year.toString()
+                val dataCompleta = "${ dia }/${ mes }/${ ano }"
 
-            } else {
-
+                lancamento.valor = this.edtValor.text.toString().trim().toDouble()
+                lancamento.pago = false
+                lancamento.tipo = this.spnTipo.selectedItem.toString()
+                lancamento.detalhe = this.spnDetalhe.selectedItem.toString()
+                lancamento.dataLancamento = dataCompleta
+                this.lancamentoDAO.salvar(lancamento)
+                Snackbar.make(findViewById(android.R.id.content), "Lançamento cadastrado com sucesso!", Snackbar.LENGTH_LONG).show()
+                // limpar formulário
+                this.edtValor.text.clear()
             }
 
         } catch (e: Exception) {
             Log.e("erro", "Ocorreu um erro ao tentar-se cadastrar o lançamento: ${ e.message.toString() }")
+            Snackbar.make(findViewById(android.R.id.content), "Erro: ${ e.message.toString() }", Snackbar.LENGTH_LONG).show()
         }
+
+    }
+
+    private fun redirecionarTelaListarLancamentos() {
+        val intent = Intent(this, LancamentosActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun calcularSaldo() {
 
     }
 
@@ -132,10 +173,13 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         if (p0!!.id == R.id.btn_lancar) {
             // registrar um lançamento de conta a pagar
+            this.cadastrar()
         } else if (p0!!.id == R.id.btn_listar_lancamentos) {
             // redirecionar a tela para listar os lançamentos
+            this.redirecionarTelaListarLancamentos()
         } else {
             // calcular o saldo
+            this.calcularSaldo()
         }
 
     }

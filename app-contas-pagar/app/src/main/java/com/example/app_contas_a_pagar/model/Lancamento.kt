@@ -6,5 +6,7 @@ class Lancamento {
     var valor: Double = 0.0
     var dataLancamento: String = ""
     var pago: Boolean = false
+    var tipo: String = ""
+    var detalhe: String = ""
 
 }

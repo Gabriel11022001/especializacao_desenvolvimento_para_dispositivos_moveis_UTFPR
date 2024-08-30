@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <!--
+            quando somente 1 opção poder ser selecionada, utilizar
+            o RadioGroup para agrupar os RadioButton, dessa forma,
+            quando um RadioButton ser selecionado, o outro será desmarcado
+        -->
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center" >
+
+            <!--
+                android:checked -> selecionar que ele vai estar marcado por padrão
+            -->
+            <RadioButton
+                android:id="@+id/rb_sexo_masculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masculino"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb_sexo_feminino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feminino"
+                android:checked="true"
+                android:layout_marginStart="25dp" />
+
+        </RadioGroup>
+
+        <!-- calendário -->
+        <DatePicker
+            android:id="@+id/dt_data_nascimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp" />
+
+        <!-- auto-complete -->
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_cidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cidade..."
+            android:layout_margin="20dp"/>
+
+        <Spinner
+            android:id="@+id/spn_profissao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_testar_componentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Testar componentes"
+            android:layout_margin="20dp"
+            android:padding="18dp" />
+
+    </LinearLayout>
+    
+</ScrollView>
