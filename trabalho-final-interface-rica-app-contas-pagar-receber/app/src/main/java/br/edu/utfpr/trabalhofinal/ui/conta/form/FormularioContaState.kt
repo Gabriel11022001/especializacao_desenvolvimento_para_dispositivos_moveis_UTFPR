@@ -1,5 +1,7 @@
 package br.edu.utfpr.trabalhofinal.ui.conta.form
 import br.edu.utfpr.trabalhofinal.data.Conta
+import br.edu.utfpr.trabalhofinal.data.TipoContaEnum
+
 data class CampoFormulario(
     val valor: String = "",
     val codigoMensagemErro: Int = 0
@@ -21,7 +23,7 @@ data class FormularioContaState(
     val data: CampoFormulario = CampoFormulario(),
     val valor: CampoFormulario = CampoFormulario(),
     val paga: CampoFormulario = CampoFormulario(),
-    val tipo: CampoFormulario = CampoFormulario()
+    val tipo: CampoFormulario = CampoFormulario(TipoContaEnum.DESPESA.name)
 ) {
     val contaNova get(): Boolean = idConta <= 0
     val formularioValido get(): Boolean = descricao.valido &&

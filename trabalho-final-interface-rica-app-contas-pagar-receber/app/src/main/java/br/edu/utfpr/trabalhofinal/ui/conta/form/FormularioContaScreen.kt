@@ -56,6 +56,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.edu.utfpr.trabalhofinal.R
+import br.edu.utfpr.trabalhofinal.data.TipoContaEnum
 import br.edu.utfpr.trabalhofinal.ui.theme.TrabalhoFinalTheme
 import br.edu.utfpr.trabalhofinal.ui.utils.composables.Carregando
 import br.edu.utfpr.trabalhofinal.ui.utils.composables.ErroAoCarregar
@@ -310,22 +311,6 @@ private fun FormContent(
                 enabled = !processando
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                imageVector = Icons.Filled.CalendarMonth,
-                contentDescription = stringResource(R.string.data),
-                tint = MaterialTheme.colorScheme.outline
-            )
-            FormTextField(
-                modifier = formTextFieldModifier,
-                titulo = stringResource(R.string.data),
-                campoFormulario = data,
-                onValorAlterado = onDataAlterada,
-                keyboardType = KeyboardType.Number,
-                keyboardCapitalization = KeyboardCapitalization.Words,
-                enabled = !processando
-            )
-        }
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
             Checkbox(
                 checked = paga.valor == "true",
@@ -342,26 +327,33 @@ private fun FormContent(
             )
             Text(text = "Paga")
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            RadioButton(
-                selected = tipo.valor == "DESPESA",
-                enabled =  !processando,
-                onClick = {
-                    onTipoAlterado("DESPESA")
-                }
-            )
-            Text(text = "Despesa")
-            RadioButton(
-                selected = tipo.valor == "RECEITA",
-                enabled = !processando,
-                onClick = {
-                    onTipoAlterado("RECEITA")
-                }
-            )
-            Text(text = "Receita")
-        }
+        TipoContaSelector(onTipoAlterado = onTipoAlterado, tipo, processando)
     }
 }
+
+@Composable
+private fun TipoContaSelector(onTipoAlterado: (String) -> Unit, tipo: CampoFormulario, processando: Boolean) {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        RadioButton(
+            selected = tipo.valor == TipoContaEnum.DESPESA.name,
+            enabled =  !processando,
+            onClick = {
+                onTipoAlterado(TipoContaEnum.DESPESA.name)
+            }
+        )
+        Text(text = "Despesa")
+        RadioButton(
+            selected = tipo.valor == TipoContaEnum.RECEITA.name,
+            enabled = !processando,
+            onClick = {
+                onTipoAlterado(TipoContaEnum.RECEITA.name)
+            }
+        )
+        Text(text = "Receita")
+    }
+
+}
+
 @Composable
 fun FormTextField(
     modifier: Modifier = Modifier,

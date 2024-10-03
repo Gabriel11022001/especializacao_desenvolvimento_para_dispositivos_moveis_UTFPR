@@ -1,4 +1,5 @@
 package br.edu.utfpr.trabalhofinal.ui.conta.form
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -126,6 +127,7 @@ class FormularioContaViewModel(
             state = state.copy(
                 salvando = true
             )
+
             val conta = state.conta.copy(
                 descricao = state.descricao.valor,
                 data = LocalDate.parse(state.data.valor),
@@ -151,6 +153,7 @@ class FormularioContaViewModel(
         )
         return state.formularioValido
     }
+
     fun mostrarDialogConfirmacao() {
         state = state.copy(mostrarDialogConfirmacao = true)
     }
