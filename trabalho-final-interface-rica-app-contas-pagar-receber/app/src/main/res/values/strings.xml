@@ -10,6 +10,7 @@
     <string name="saldo">Saldo</string>
     <string name="previsao">Previsão</string>
     <string name="descricao_obrigatoria">A descrição é obrigatória</string>
+    <string name="valor_obrigatorio">O valor é obrigatório</string>
     <string name="nova_conta">Nova conta</string>
     <string name="editar_conta">Editar conta</string>
     <string name="voltar">Voltar</string>

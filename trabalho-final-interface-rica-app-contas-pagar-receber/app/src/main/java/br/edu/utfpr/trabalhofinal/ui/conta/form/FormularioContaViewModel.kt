@@ -8,6 +8,7 @@ import br.edu.utfpr.trabalhofinal.R
 import br.edu.utfpr.trabalhofinal.data.ContaDatasource
 import br.edu.utfpr.trabalhofinal.data.TipoContaEnum
 import br.edu.utfpr.trabalhofinal.ui.Arguments
+import java.lang.NumberFormatException
 import java.math.BigDecimal
 import java.time.LocalDate
 class FormularioContaViewModel(
@@ -61,6 +62,29 @@ class FormularioContaViewModel(
     } else {
         0
     }
+
+    private fun validarValor(valor: String): Int {
+
+        try {
+
+            if (valor.isBlank()) {
+
+                return R.string.valor_obrigatorio
+            }
+
+            if (valor.toDouble() <= 0) {
+
+                return R.string.valor_invalido
+            }
+
+            return 0
+        } catch (e: NumberFormatException) {
+
+            return R.string.valor_invalido
+        }
+
+    }
+
     fun onDataAlterada(novaData: String) {
         if (state.data.valor != novaData) {
             state = state.copy(
@@ -120,6 +144,9 @@ class FormularioContaViewModel(
         state = state.copy(
             descricao = state.descricao.copy(
                 codigoMensagemErro = validarDescricao(state.descricao.valor)
+            ),
+            valor = state.valor.copy(
+                codigoMensagemErro = validarValor(state.valor.valor)
             )
         )
         return state.formularioValido

@@ -1,4 +1,8 @@
 package br.edu.utfpr.trabalhofinal.ui.conta.form
+import android.provider.MediaStore.Audio.Radio
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,12 +22,14 @@ import androidx.compose.material.icons.filled.CalendarMonth
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -33,6 +39,8 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -56,12 +64,15 @@ fun FormularioContaScreen(
     viewModel: FormularioContaViewModel = viewModel(),
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
+
     LaunchedEffect(viewModel.state.contaPersistidaOuRemovida) {
         if (viewModel.state.contaPersistidaOuRemovida) {
             onVoltarPressed()
         }
     }
+
     val context = LocalContext.current
+
     LaunchedEffect(snackbarHostState, viewModel.state.codigoMensagem) {
         viewModel.state.codigoMensagem
             .takeIf { it > 0 }
@@ -297,33 +308,39 @@ private fun FormContent(
                 enabled = !processando
             )
         }
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                imageVector = Icons.Filled.Check,
-                contentDescription = stringResource(R.string.paga),
-                tint = MaterialTheme.colorScheme.outline
-            )
-            FormTextField(
-                modifier = formTextFieldModifier,
-                titulo = stringResource(R.string.paga),
-                campoFormulario = paga,
-                onValorAlterado = onStatusPagamentoAlterado,
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Start) {
+            Checkbox(
+                checked = paga.valor == "true",
+                onCheckedChange = {
+
+                    if (it) {
+                        onStatusPagamentoAlterado("true")
+                    } else {
+                        onStatusPagamentoAlterado("false")
+                    }
+
+                },
                 enabled = !processando
             )
+            Text(text = "Paga")
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Icon(
-                imageVector = Icons.Filled.AccountBalance,
-                contentDescription = stringResource(R.string.tipo),
-                tint = MaterialTheme.colorScheme.outline
+            RadioButton(
+                selected = tipo.valor == "DESPESA",
+                enabled =  !processando,
+                onClick = {
+                    onTipoAlterado("DESPESA")
+                }
             )
-            FormTextField(
-                modifier = formTextFieldModifier,
-                titulo = stringResource(R.string.tipo),
-                campoFormulario = tipo,
-                onValorAlterado = onTipoAlterado,
-                enabled = !processando
+            Text(text = "Despesa")
+            RadioButton(
+                selected = tipo.valor == "RECEITA",
+                enabled = !processando,
+                onClick = {
+                    onTipoAlterado("RECEITA")
+                }
             )
+            Text(text = "Receita")
         }
     }
 }
