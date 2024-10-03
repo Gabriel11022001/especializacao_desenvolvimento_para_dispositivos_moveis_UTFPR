@@ -1,4 +1,5 @@
 package br.edu.utfpr.trabalhofinal.ui.conta.form
+import android.app.DatePickerDialog
 import android.provider.MediaStore.Audio.Radio
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -37,6 +38,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -305,6 +307,22 @@ private fun FormContent(
                 titulo = stringResource(R.string.valor),
                 campoFormulario = valor,
                 onValorAlterado = onValorAlterado,
+                enabled = !processando
+            )
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = Icons.Filled.CalendarMonth,
+                contentDescription = stringResource(R.string.data),
+                tint = MaterialTheme.colorScheme.outline
+            )
+            FormTextField(
+                modifier = formTextFieldModifier,
+                titulo = stringResource(R.string.data),
+                campoFormulario = data,
+                onValorAlterado = onDataAlterada,
+                keyboardType = KeyboardType.Number,
+                keyboardCapitalization = KeyboardCapitalization.Words,
                 enabled = !processando
             )
         }
