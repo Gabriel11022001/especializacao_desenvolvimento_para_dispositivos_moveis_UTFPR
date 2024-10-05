@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CadastroItemActivity"
+    android:background="@color/white"
+    android:padding="10dp"
+    android:orientation="vertical" >
+
+    <!-- campo do nome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_nome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:inputType="textPersonName" />
+        
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- campo do sobrenome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_sobrenome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sobrenome"
+            android:inputType="textPersonName" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- campo da idade -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_idade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Idade"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- campo de endereço -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_endereco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Endereço"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- campo da url da imagem -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edt_url_imagem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Url da imagem"
+            android:inputType="textUri" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_marginTop="20dp" />
+    
+</LinearLayout>
