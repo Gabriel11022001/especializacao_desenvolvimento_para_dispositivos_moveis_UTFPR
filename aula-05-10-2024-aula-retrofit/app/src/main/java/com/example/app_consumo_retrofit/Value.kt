@@ -16,5 +16,6 @@ class Value {
     var imagemUrl: String = ""
     @SerializedName("age")
     var idade: Int = 0
-
+    @SerializedName("profession")
+    var profession: String = ""
 }

@@ -6,11 +6,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.transition.Visibility
 import com.example.app_consumo_retrofit.databinding.ActivityDetalhesItemBinding
 import com.example.app_consumo_retrofit.service.RetrofitClient
 import com.squareup.picasso.Picasso
@@ -35,12 +31,8 @@ class DetalhesItemActivity : AppCompatActivity() {
 
         val id: String = intent.getStringExtra("id")!!
 
-        if (id != null) {
-
-            if (id.isNotBlank()) {
-                this.buscarItem(id)
-            }
-
+        if (id.isNotBlank()) {
+            this.buscarItem(id)
         }
 
     }
@@ -50,6 +42,45 @@ class DetalhesItemActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         this.detalhesItemBinding.btnDeletarItem.setOnClickListener { this.deletar() }
+        this.detalhesItemBinding.btnEditar.setOnClickListener { this.editar() }
+    }
+
+    private fun editar() {
+        val id = this.item!!.id
+        val profissao = this.detalhesItemBinding.edtProfissao.text.toString().trim()
+        val value = Value()
+        value.id = id
+        value.nome = item!!.valor!!.nome
+        value.profession = profissao
+        value.idade = item!!.valor!!.idade
+        value.sobrenome = item!!.valor!!.sobrenome
+        value.imagemUrl = item!!.valor!!.imagemUrl
+        value.endereco = item!!.valor!!.endereco
+
+        if (profissao.isBlank()) {
+            Toast.makeText(this, "Informe a profissão!", Toast.LENGTH_SHORT).show()
+        } else {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val retrofitClient = RetrofitClient()
+                val apiService = retrofitClient.apiService
+
+                val itemEditado = apiService.editar(id, value)
+                item!!.valor!!.profession = value.profession
+
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(this@DetalhesItemActivity, "Edição finalizada com sucesso!", Toast.LENGTH_SHORT)
+                        .show()
+
+                    // detalhesItemBinding.edtProfissao.setText(item!!.valor!!.profession)
+                    startActivity(Intent(applicationContext, MainActivity::class.java))
+                    finish()
+                }
+
+            }
+
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -103,7 +134,7 @@ class DetalhesItemActivity : AppCompatActivity() {
         Log.d("id", it.valor!!.id)
         this.detalhesItemBinding.txtNomeItem.text = it.valor!!.nome + " " + it.valor!!.sobrenome
         this.detalhesItemBinding.txtIdadeItem.text = it.valor!!.idade.toString() + " anos de idade"
-        this.detalhesItemBinding.txtEnderecoItem.text = it.valor!!.endereco
+        // this.detalhesItemBinding.txtEnderecoItem.text = it.valor!!.endereco
         this.detalhesItemBinding.txtErro.visibility = View.GONE
 
         // apresentar a imagm utilizando o picaso
@@ -112,6 +143,8 @@ class DetalhesItemActivity : AppCompatActivity() {
             .placeholder(R.drawable.ic_baixando)
             .error(R.drawable.ic_erro)
             .into(this.detalhesItemBinding.imgItem)
+
+        this.detalhesItemBinding.edtProfissao.setText(it.valor!!.profession)
     }
 
     private fun deletar() {

@@ -5,29 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetalhesItemActivity"
-    android:background="@color/white" >
+    android:background="@color/white"
+    tools:context=".DetalhesItemActivity">
 
     <ImageView
         android:id="@+id/img_item"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="62dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_nome_item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_item"
         android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_item"
         tools:text="Vagner Martins" />
 
     <TextView
@@ -37,12 +37,12 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/txt_nome_item"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_nome_item"
         tools:text="30 anos" />
 
-    <TextView
+    <!--<TextView
         android:id="@+id/txt_endereco_item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -51,25 +51,51 @@
         app:layout_constraintTop_toBottomOf="@id/txt_idade_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Av Paulista 1000" />
+        tools:text="Av Paulista 1000" />-->
+
+    <EditText
+        android:id="@+id/edt_profissao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Informe a profissão..."
+        app:layout_constraintTop_toBottomOf="@id/txt_idade_item" />
 
     <ImageButton
         android:id="@+id/btn_deletar_item"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@android:drawable/ic_menu_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@android:drawable/ic_menu_delete" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        android:layout_margin="8dp" />
+
+    <ImageButton
+        android:id="@+id/btn_editar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:src="@android:drawable/ic_menu_save"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        android:layout_margin="8dp" />
 
     <TextView
         android:id="@+id/txt_erro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="visible" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

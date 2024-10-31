@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -39,6 +40,7 @@ class ItemAdapter(
         holder.nome.text = "${ item.valor!!.nome } ${ item.valor!!.sobrenome }"
         holder.endereco.text = item.valor!!.endereco
         holder.idade.text = "${ item.valor!!.idade } anos de idade"
+        holder.profissao.text = item.valor!!.profession
 
         val picaso = Picasso.get()
 
@@ -65,5 +67,6 @@ data class ItemViewHolder(
     val foto: ImageView = view.findViewById(R.id.img_foto_item),
     val nome: TextView = view.findViewById(R.id.txt_nome_item),
     val idade: TextView = view.findViewById(R.id.txt_idade_item),
-    val endereco: TextView = view.findViewById(R.id.txt_endereco_item)
+    val endereco: TextView = view.findViewById(R.id.txt_endereco_item),
+    val profissao: TextView = view.findViewById(R.id.txt_profissao)
 ): ViewHolder(view)

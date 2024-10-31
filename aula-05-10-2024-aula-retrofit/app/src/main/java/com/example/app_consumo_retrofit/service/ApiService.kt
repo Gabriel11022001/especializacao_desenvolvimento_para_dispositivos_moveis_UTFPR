@@ -5,6 +5,7 @@ import com.example.app_consumo_retrofit.Value
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -21,5 +22,8 @@ interface ApiService {
 
     @POST("items")
     suspend fun cadastrar(@Body value: Value): Item
+
+    @PATCH("items/{id}")
+    suspend fun editar(@Path("id") id: String, @Body value: Value): Item
 
 }

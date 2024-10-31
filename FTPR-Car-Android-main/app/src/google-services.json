@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "80484260398",
+    "project_id": "projetofinaldisciplicaapis",
+    "storage_bucket": "projetofinaldisciplicaapis.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80484260398:android:fa001335831451585cddbf",
+        "android_client_info": {
+          "package_name": "com.example.myapitest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoIdFTCiTrl6D6BpaTZVsWBD0K9ZR8Od8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
