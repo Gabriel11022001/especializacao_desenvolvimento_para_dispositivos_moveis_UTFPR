@@ -9,7 +9,7 @@
     android:background="?attr/selectableItemBackground">
 
     <ImageView
-        android:id="@+id/image"
+        android:id="@+id/img_foto_carro"
         android:layout_width="60dp"
         android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,33 +17,33 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
-        android:id="@+id/model"
+        android:id="@+id/txt_nome_carro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintStart_toEndOf="@id/img_foto_carro"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="Honda Civic" />
 
     <TextView
-        android:id="@+id/year"
+        android:id="@+id/txt_ano_carro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/model"
+        app:layout_constraintStart_toEndOf="@id/img_foto_carro"
+        app:layout_constraintTop_toBottomOf="@id/txt_nome_carro"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="2019/2019" />
 
     <TextView
-        android:id="@+id/license"
+        android:id="@+id/txt_licenca"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@id/year"
+        app:layout_constraintStart_toEndOf="@id/img_foto_carro"
+        app:layout_constraintTop_toBottomOf="@id/txt_ano_carro"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="ABC-1234"/>
+        tools:text="ABC-1234" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
