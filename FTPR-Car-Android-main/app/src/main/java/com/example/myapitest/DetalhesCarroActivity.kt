@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.myapitest.databinding.ActivityDetalhesCarroBinding
 import com.example.myapitest.model.Carro
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 
 class DetalhesCarroActivity : AppCompatActivity() {
 
@@ -83,6 +84,14 @@ class DetalhesCarroActivity : AppCompatActivity() {
         this.detalhesCarroBinding.txtNomeCarro.text = "Modelo: ${ carro.nomeCarro.uppercase() }"
         this.detalhesCarroBinding.txtLicencaCarro.text = "Licença: ${ carro.licenca }"
         this.detalhesCarroBinding.txtAnoCarro.text = "Ano de lançamento do carro: ${ carro.ano }"
+
+        // carregar foto do carro com picasso
+        val picasso = Picasso.get()
+
+        picasso.load(carro.urlFotoCarro)
+            .placeholder(R.drawable.ic_baixando_foto)
+            .error(R.drawable.ic_erro_baixar_foto)
+            .into(this.detalhesCarroBinding.imgFotoCarro)
     }
 
     private fun apresentarNotificacao(sucesso: Boolean, mensagem: String) {

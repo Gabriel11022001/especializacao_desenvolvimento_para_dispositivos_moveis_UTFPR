@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.myapitest.R
 import com.example.myapitest.model.Carro
 import com.example.myapitest.view_holder.CarroViewHolder
+import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
 class CarroAdapter(private val contexto: Context, private val onVisualizarCarro: (String) -> Unit): Adapter<CarroViewHolder>() {
@@ -32,6 +33,13 @@ class CarroAdapter(private val contexto: Context, private val onVisualizarCarro:
         holder.txtNomeCarro.text = carro.nomeCarro.uppercase()
         holder.txtAnoCarro.text = carro.ano
         holder.txtLicencaCarro.text = carro.licenca
+
+        val picasso = Picasso.get()
+
+        picasso.load(carro.urlFotoCarro)
+            .placeholder(R.drawable.ic_baixando_foto)
+            .error(R.drawable.ic_erro_baixar_foto)
+            .into(holder.imgCarro)
 
         // visualizar dados carro
         holder.itemView.setOnClickListener {
