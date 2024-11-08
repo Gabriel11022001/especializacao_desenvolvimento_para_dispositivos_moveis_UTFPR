@@ -12,5 +12,9 @@ data class Carro(
     @SerializedName("name")
     var nomeCarro: String = "",
     @SerializedName("licence")
-    var licenca: String = ""
+    var licenca: String = "",
+    @SerializedName("place")
+    var posicao: Posicao? = null,
+    @SerializedName("error")
+    var erro: String = ""
 )

@@ -2,14 +2,12 @@ package com.example.myapitest
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapitest.adapter.CarroAdapter
 import com.example.myapitest.databinding.ActivityMainBinding
 import com.example.myapitest.model.Carro
-import java.util.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,6 +38,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         this.binding.recyclerCarros.adapter = this.carroAdapter
+
+        this.binding.btnAdicionarCarro.setOnClickListener { this.cadastrarCarro() }
+    }
+
+    private fun cadastrarCarro() {
+        startActivity(Intent(this, CadastroCarroActivity::class.java))
+        finish()
     }
 
     private fun requestLocationPermission() {

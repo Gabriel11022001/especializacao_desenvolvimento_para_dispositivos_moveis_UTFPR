@@ -126,7 +126,10 @@ class DetalhesCarroActivity : AppCompatActivity() {
     }
 
     private fun editarCarro() {
-
+        val intent: Intent = Intent(this, CadastroCarroActivity::class.java)
+        intent.putExtra("id_carro", this.idCarro)
+        startActivity(intent)
+        finish()
     }
 
     private fun retornar() {
