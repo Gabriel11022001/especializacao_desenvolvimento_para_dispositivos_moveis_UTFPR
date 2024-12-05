@@ -186,6 +186,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.red,
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
       ),
+      backgroundColor: Color.fromRGBO(241, 242, 246, 1),
       body: Padding(
         padding: EdgeInsets.all(18),
         child: Center(

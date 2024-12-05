@@ -97,6 +97,7 @@ class CadastroContato extends StatelessWidget {
         titleTextStyle: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
         foregroundColor: Colors.white,
       ),
+      backgroundColor: Color.fromRGBO(241, 242, 246, 1),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(18),
