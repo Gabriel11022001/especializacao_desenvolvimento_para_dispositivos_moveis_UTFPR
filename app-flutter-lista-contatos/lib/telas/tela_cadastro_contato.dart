@@ -1,12 +1,15 @@
 import 'dart:ffi';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:lista_contatos_flutter/componentes/label.dart';
 import 'package:lista_contatos_flutter/dtos/contato_dto.dart';
+import 'package:lista_contatos_flutter/model/endereco.dart';
 import 'package:lista_contatos_flutter/repositorio/contato_repositorio.dart';
+import 'package:lista_contatos_flutter/servico/via_cep_servico.dart';
 
 class CadastroContato extends StatelessWidget {
 
@@ -23,7 +26,21 @@ class CadastroContato extends StatelessWidget {
   final ContatoRepositorio _contatoRepositorio = ContatoRepositorio();
 
   // método para consultar o endereço do contato pelo cep para a api do ViaCEP
-  void _consultarEnderecoContatoPeloCep() {
+  void _consultarEnderecoContatoPeloCep() async {
+
+    try {
+      final dio = Dio();
+      final clienteHttp = ClienteRest(dio);
+
+      Endereco endereco = await clienteHttp.buscarEnderecoPeloCep(this._controllerCepEnderecoContato.text.toString().trim());
+
+      this._controllerLogradouroEnderecoContato.text = endereco.logradouro.toString();
+      this._controllerComplementoEnderecoContato.text = endereco.complemento.toString();
+      this._controllerBairroEnderecoContato.text = endereco.bairro.toString();
+      this._controllerCidadeEnderecoContato.text = endereco.localidade.toString();
+    } catch (e) {
+      print("Erro consultar endereço pelo cep: ${ e }");
+    }
 
   }
 
