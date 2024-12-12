@@ -1,0 +1,2 @@
+vídeo apresentando o projeto: https://github.com/Gabriel11022001/especializacao_desenvolvimento_para_dispositivos_moveis_UTFPR/blob/master/video_apresentacao_app_materia_flutter.mkv
+projeto: https://github.com/Gabriel11022001/especializacao_desenvolvimento_para_dispositivos_moveis_UTFPR/tree/master/app-flutter-lista-contatos
