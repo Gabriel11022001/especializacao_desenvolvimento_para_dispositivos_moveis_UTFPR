@@ -36,7 +36,6 @@ fun TelaHome(
     // meus states vão ficar aqui
     val scaffoldState = rememberScaffoldState()
     val cep: MutableState<String> = remember { mutableStateOf("") }
-    val cepFormatado: MutableState<String> = remember { mutableStateOf("") }
     val consultando: MutableState<Boolean> = remember { mutableStateOf(false) }
     val erroConsultarEnderecoPeloCep: MutableState<String> = remember { mutableStateOf("") }
     val habilitarCampoCep: MutableState<Boolean> = remember { mutableStateOf(true) }
@@ -66,22 +65,24 @@ fun TelaHome(
                 modifier = modifier,
                 carregando = consultando.value,
                 erroCampoCep = erroConsultarEnderecoPeloCep.value,
-                cep = cepFormatado.value,
+                cep = cep.value,
                 habilitado = habilitarCampoCep.value,
                 onDigitarCep = { cepDigitado ->
                     cep.value = cepDigitado.trim()
 
-                    cepFormatado.value = aplicarMascaraCep(cep.value)
-
-                    if (cepFormatado.value.length == 0) {
+                    if (cep.value.length == 0) {
                         habilitarBotao.value = false
                         erroConsultarEnderecoPeloCep.value = "Informe o cep!"
-                    } else if (validarCep(cepFormatado.value.trim()).isNotBlank()) {
-                        habilitarBotao.value = false
-                        erroConsultarEnderecoPeloCep.value = "Cep inválido!"
-                    } else if (cepFormatado.value.length == 9) {
-                        habilitarBotao.value = true
-                        erroConsultarEnderecoPeloCep.value = ""
+                    } else if (cep.value.length == 9) {
+
+                        if (validarCep(cep.value.trim()).isNotBlank()) {
+                            habilitarBotao.value = false
+                            erroConsultarEnderecoPeloCep.value = "Cep inválido!"
+                        } else {
+                            habilitarBotao.value = true
+                            erroConsultarEnderecoPeloCep.value = ""
+                        }
+
                     }
 
                 }
@@ -94,7 +95,7 @@ fun TelaHome(
                 consultando = consultando.value,
                 onConsultar = {
                     // consultar endereço pelo cep
-                    val cepDigitado = cepFormatado.value.trim()
+                    val cepDigitado = cep.value.trim()
 
                     println("Cep digitado: " + cepDigitado)
 
@@ -106,7 +107,7 @@ fun TelaHome(
                     coroutineScope.launch {
 
                         try {
-                            val resp = enderecoServico.consultarEnderecoPeloCep(cepFormatado.value.trim())
+                            val resp = enderecoServico.consultarEnderecoPeloCep(cep.value.trim())
 
                             consultando.value = false
                             habilitarBotao.value = true
@@ -124,7 +125,7 @@ fun TelaHome(
 
                             } else {
                                 // não encontrou o endereço
-                                println("Não encontrou o endereço para o cep ${ cepFormatado.value }")
+                                println("Não encontrou o endereço para o cep ${ cep.value }")
 
                                 // apresentar alerta de erro
                                 scaffoldState.snackbarHostState.showSnackbar("Não foi encontrado um endereço para o cep em questão!")
