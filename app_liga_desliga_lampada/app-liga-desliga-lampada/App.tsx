@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Alert, Image, ScrollView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 enum StatusLed {
@@ -9,9 +9,6 @@ enum StatusLed {
 
 }
 
-// coloquei um ip fake pois não tenho um arduino de verdade, só para exemplificar
-const IP_ARDUINO = "192.168.0.121";
-
 export default function App() {
 
   const [ statusLed, setStatusLed ] = useState<StatusLed>(StatusLed.desligado);
@@ -20,21 +17,35 @@ export default function App() {
 
     try {
 
+      const ipEsp32: string = "";
+
       if (statusLed === StatusLed.ligado) {
         // desligar
         setStatusLed(StatusLed.desligado);
 
-        await fetch(`http://${ IP_ARDUINO }/desligar`);
+        await fetch(`http://${ ipEsp32 }/led/off"`);
       } else {
         // ligar
         setStatusLed(StatusLed.ligado);
 
-        await fetch(`http://${ IP_ARDUINO }/ligar`);
+        await fetch(`http://${ ipEsp32 }/led/on"`);
       }
 
-      console.log("Led acionado com sucesso!");
+      Alert.alert("Sucesso", "Led ligado com sucesso!", [
+        {
+          style: "default",
+          text: "OK",
+          onPress: () => {}
+        }
+      ]);
     } catch (e) {
-      console.error("Erro ao tentar-se acionar o led: " + e);
+      Alert.alert("Atenção!", "Erro ao tentar-se ligar o led, tente novamente: " + e, [
+        {
+          style: "cancel",
+          text: "OK",
+          onPress: () => {}
+        }
+      ]);
     }
 
   }
